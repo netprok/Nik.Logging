@@ -5,6 +5,11 @@ VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nik.Logging.NewRelic", "Nik.Logging.NewRelic\Nik.Logging.NewRelic.csproj", "{1D85E87B-1ABB-4D7D-A385-75889082393A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_commands", "_commands", "{391CCA11-0E90-4454-8951-0CAEC3FE6B4A}"
+	ProjectSection(SolutionItems) = preProject
+		nuget-commands.txt = nuget-commands.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
