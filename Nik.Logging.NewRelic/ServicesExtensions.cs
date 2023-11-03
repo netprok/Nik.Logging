@@ -4,15 +4,27 @@ public static class ServicesExtensions
 {
     private const string DefaultLoggingLevel = "Information";
 
-    public static IServiceCollection UseNewRelicLogging(this IServiceCollection services, IConfigurationRoot configuration)
+    public static IServiceCollection UseLogging(this IServiceCollection services, IConfigurationRoot configuration)
     {
         services.AddLogging(configure =>
         {
             var minimumLevel = configuration.GetValue("Logging:LogLevel:Default", DefaultLoggingLevel) ?? DefaultLoggingLevel;
             configure.SetMinimumLevel(Enum.Parse<LogLevel>(minimumLevel));
+        });
 
-            var newRelicLevels = configuration.GetSection("Logging:NewRelic:ActiveLogLevels").Get<List<string>>();
-            var newRelicKey = configuration.GetSection("Logging:NewRelic").GetValue(typeof(string), "NewRelicLicenseKey") as string;
+        return services;
+    }
+
+    public static IServiceCollection UseNewRelicLogging(this IServiceCollection services)
+    {
+        services.AddLogging(configure =>
+        {
+            var configuration = new ConfigurationBuilder()
+              .AddJsonFile("_config/newrelic.json")
+              .Build();
+
+            var newRelicLevels = configuration.GetSection("ActiveLogLevels").Get<List<string>>();
+            var newRelicKey = configuration.GetValue(typeof(string), "NewRelicLicenseKey") as string;
             if (!string.IsNullOrWhiteSpace(newRelicKey))
             {
                 IEnumerable<LogLevel> levels = new LogLevel[] { };

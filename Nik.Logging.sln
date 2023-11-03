@@ -3,11 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nik.Logging.NewRelic", "Nik.Logging.NewRelic\Nik.Logging.NewRelic.csproj", "{1D85E87B-1ABB-4D7D-A385-75889082393A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nik.Logging.NewRelic", "Nik.Logging.NewRelic\Nik.Logging.NewRelic.csproj", "{1D85E87B-1ABB-4D7D-A385-75889082393A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_commands", "_commands", "{391CCA11-0E90-4454-8951-0CAEC3FE6B4A}"
 	ProjectSection(SolutionItems) = preProject
 		nuget-commands.txt = nuget-commands.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_config", "_config", "{8D3809CB-3FBE-4664-8935-C13F32D9253A}"
+	ProjectSection(SolutionItems) = preProject
+		_config\newrelic.json = _config\newrelic.json
 	EndProjectSection
 EndProject
 Global
