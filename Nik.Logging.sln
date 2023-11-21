@@ -10,11 +10,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_commands", "_commands", "{
 		nuget-commands.txt = nuget-commands.txt
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_config", "_config", "{8D3809CB-3FBE-4664-8935-C13F32D9253A}"
-	ProjectSection(SolutionItems) = preProject
-		_config\newrelic.json = _config\newrelic.json
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
