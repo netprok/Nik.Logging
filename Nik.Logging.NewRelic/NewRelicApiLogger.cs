@@ -2,27 +2,13 @@
 
 namespace Nik.Logging.NewRelic;
 
-public sealed class NewRelicApiLogger : ILogger
-{
-    private readonly string name;
-    private readonly IEnvironmentHelper environmentHelper;
-    private readonly Func<NewRelicConfig> getCurrentConfig;
-    private readonly IJsonSerializer jsonSerializer;
-    private readonly NewRelicConfig newRelicConfig;
-
-    public NewRelicApiLogger(
+public sealed class NewRelicApiLogger(
         IJsonSerializer jsonSerializer,
         NewRelicConfig newRelicConfig,
-        string name,
+        string categoryName,
         IEnvironmentHelper environmentHelper,
-        Func<NewRelicConfig> getCurrentConfig)
-    {
-        this.jsonSerializer = jsonSerializer;
-        this.newRelicConfig = newRelicConfig;
-        this.name = name;
-        this.environmentHelper = environmentHelper;
-        this.getCurrentConfig = getCurrentConfig;
-    }
+        Func<NewRelicConfig> getCurrentConfig) : ILogger
+{
 
     private LogContent GenerateLogContent(string message, LogLevel level, string eventID, Exception exception)
     {
@@ -38,7 +24,7 @@ public sealed class NewRelicApiLogger : ILogger
             HostName = Environment.MachineName,
             TimeCreated = DateTime.Now.ToString("O"),
             Source = "api.logs",
-            ClassName = name,
+            ClassName = categoryName,
             EventID = eventID,
             ErrorDetails = exception?.ToString(),
             Environment = environmentName,

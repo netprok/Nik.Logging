@@ -21,7 +21,7 @@ public sealed class NewRelicLoggerProvider : ILoggerProvider
     }
 
     public ILogger CreateLogger(string categoryName) =>
-        loggers.GetOrAdd(categoryName, name => new NewRelicApiLogger(jsonSerializer, currentConfig, name, environmentHelper, GetCurrentConfig));
+        loggers.GetOrAdd(categoryName, categoryName => new NewRelicApiLogger(jsonSerializer, currentConfig, categoryName, environmentHelper, GetCurrentConfig));
 
     private NewRelicConfig GetCurrentConfig() => currentConfig;
 

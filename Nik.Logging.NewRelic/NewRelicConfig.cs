@@ -6,7 +6,7 @@ public sealed class NewRelicConfig
 
     public List<LogLevel> ActiveLogLevels { get; set; } = [];
 
-    public string Channel { get; set; } = "Nik";
+    public string Channel { get; set; } = string.Empty;
 
-    public string LogType { get; set; } = "windows_application";
+    public string LogType { get; set; } = string.Empty;
 }

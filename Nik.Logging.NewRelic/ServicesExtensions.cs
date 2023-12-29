@@ -8,6 +8,8 @@ public static class ServicesExtensions
         {
             var newRelicLevels = configuration.GetSection("Logging:NewRelic:ActiveLogLevels").Get<List<string>>();
             var newRelicKey = configuration.GetValue(typeof(string), "Logging:NewRelic:NewRelicLicenseKey") as string;
+            var channel = configuration.GetValue(typeof(string), "Logging:NewRelic:Channel") as string;
+            var logType = configuration.GetValue(typeof(string), "Logging:NewRelic:LogType") as string;
             if (!string.IsNullOrWhiteSpace(newRelicKey))
             {
                 IEnumerable<LogLevel> levels = new LogLevel[] { };
@@ -25,6 +27,8 @@ public static class ServicesExtensions
                 {
                     configuration.ActiveLogLevels.AddRange(levels);
                     configuration.NewRelicLicenseKey = newRelicKey;
+                    configuration.Channel = channel ?? "Nik";
+                    configuration.LogType = logType ?? "windows_application";
                 });
             }
         });
