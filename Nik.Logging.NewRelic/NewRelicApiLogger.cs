@@ -36,14 +36,14 @@ public sealed class NewRelicApiLogger : ILogger
             Version = Assembly.GetEntryAssembly()?.GetName()?.Version?.ToString(),
             UserId = Environment.UserName,
             HostName = Environment.MachineName,
-            LogType = "windows_application",
-            TimeCreated = DateTime.Now.ToString("s"),
+            TimeCreated = DateTime.Now.ToString("O"),
             Source = "api.logs",
             ClassName = name,
             EventID = eventID,
             ErrorDetails = exception?.ToString(),
             Environment = environmentName,
-            Channel = "Worker"
+            LogType = newRelicConfig.LogType,
+            Channel = newRelicConfig.Channel,
         };
     }
 

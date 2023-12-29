@@ -2,6 +2,6 @@ Install-Package NuGet.CommandLine
 
 dotnet pack -c Release
 
-nuget add '.\Nik.Logging\bin\Release\Nik.Logging.1.2.1.nupkg' -source 'D:\OneDrive\Software Development\nik-nuget-package-source'
-nuget add '.\Nik.Logging.NewRelic\bin\Release\Nik.Logging.NewRelic.1.2.1.nupkg' -source 'D:\OneDrive\Software Development\nik-nuget-package-source'
+nuget add '.\Nik.Logging\bin\Release\Nik.Logging.1.2.2.nupkg' -source 'D:\OneDrive\Software Development\nik-nuget-package-source'
+nuget add '.\Nik.Logging.NewRelic\bin\Release\Nik.Logging.NewRelic.1.2.2.nupkg' -source 'D:\OneDrive\Software Development\nik-nuget-package-source'
 
