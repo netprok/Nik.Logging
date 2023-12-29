@@ -54,6 +54,11 @@ public sealed class NewRelicApiLogger : ILogger
             return;
         }
 
+        Task.Run(() => LogNonBlocking(logLevel, eventId, state, exception, formatter)).ConfigureAwait(false);
+    }
+
+    private void LogNonBlocking<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
+    {
         try
         {
             HttpClient httpClient = new()
@@ -65,7 +70,7 @@ public sealed class NewRelicApiLogger : ILogger
             var content = GenerateLogContent(formatter(state, exception), logLevel, eventId.ToString(), exception);
             var json = jsonSerializer.Serialize(content, false);
             var response = httpClient.PostAsync("/log/v1", new StringContent(json, Encoding.UTF8, "application/json")).Result;
-            response.Content.ReadAsStringAsync().Wait();
+            response.Content.ReadAsStringAsync();
         }
         catch (Exception)
         {

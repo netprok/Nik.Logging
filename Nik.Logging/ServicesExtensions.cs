@@ -8,6 +8,7 @@ public static class ServicesExtensions
     {
         services.AddLogging(configure =>
         {
+            configure.ClearProviders();
             var minimumLevel = configuration.GetValue("Logging:LogLevel:Default", DefaultLoggingLevel) ?? DefaultLoggingLevel;
             configure.SetMinimumLevel(Enum.Parse<LogLevel>(minimumLevel));
         });
