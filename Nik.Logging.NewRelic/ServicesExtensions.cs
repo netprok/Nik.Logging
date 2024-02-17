@@ -2,7 +2,7 @@
 
 public static class ServicesExtensions
 {
-    public static ILoggingBuilder UseNewRelicLogging(this ILoggingBuilder loggingBuilder, IServiceCollection services, IConfigurationRoot configuration)
+    public static ILoggingBuilder AddNewRelic(this ILoggingBuilder loggingBuilder, IServiceCollection services, IConfigurationRoot configuration)
     {
         var newRelicLevels = configuration.GetSection("Logging:NewRelic:ActiveLogLevels").Get<List<string>>();
         var newRelicKey = configuration.GetValue(typeof(string), "Logging:NewRelic:NewRelicLicenseKey") as string;

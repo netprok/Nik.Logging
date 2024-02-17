@@ -1,6 +1,6 @@
 ﻿namespace Nik.Logging.NewRelic;
 
-public sealed class NewRelicConfig
+public sealed class NewRelicOptions
 {
     public string NewRelicLicenseKey { get; set; } = string.Empty;
 

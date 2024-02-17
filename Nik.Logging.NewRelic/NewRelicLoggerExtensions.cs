@@ -6,10 +6,10 @@ public static class NewRelicLoggerExtensions
     {
         Services.TryAddEnumerable(ServiceDescriptor.Singleton<ILoggerProvider, NewRelicLoggerProvider>());
 
-        LoggerProviderOptions.RegisterProviderOptions<NewRelicConfig, NewRelicLoggerProvider>(Services);
+        LoggerProviderOptions.RegisterProviderOptions<NewRelicOptions, NewRelicLoggerProvider>(Services);
     }
 
-    public static void AddNewRelicLogger(this IServiceCollection Services, Action<NewRelicConfig> configure)
+    public static void AddNewRelicLogger(this IServiceCollection Services, Action<NewRelicOptions> configure)
     {
         Services.AddNewRelicLogger();
         Services.Configure(configure);

@@ -4,10 +4,10 @@ namespace Nik.Logging.NewRelic;
 
 public sealed class NewRelicApiLogger(
         IJsonSerializer jsonSerializer,
-        NewRelicConfig newRelicConfig,
+        NewRelicOptions newRelicConfig,
         string categoryName,
         IEnvironmentHelper environmentHelper,
-        Func<NewRelicConfig> getCurrentConfig) : ILogger
+        Func<NewRelicOptions> getCurrentConfig) : ILogger
 {
 
     private LogContent GenerateLogContent(string message, LogLevel level, string eventID, Exception exception)

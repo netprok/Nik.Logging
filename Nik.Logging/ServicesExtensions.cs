@@ -9,10 +9,11 @@ public static class ServicesExtensions
         services.AddLogging(configure =>
         {
             configure.ClearProviders();
+            configure.AddConsole();
+            configure.AddNewRelic(services, configuration);
+
             var minimumLevel = configuration.GetValue("Logging:LogLevel:Default", DefaultLoggingLevel) ?? DefaultLoggingLevel;
             configure.SetMinimumLevel(Enum.Parse<LogLevel>(minimumLevel));
-
-            configure.UseNewRelicLogging(services, configuration);
         });
 
         return services;
