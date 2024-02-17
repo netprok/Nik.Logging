@@ -2,12 +2,12 @@
 
 public static class ServicesExtensions
 {
-    public static ILoggingBuilder AddNewRelic(this ILoggingBuilder loggingBuilder, IServiceCollection services, IConfigurationRoot configuration)
+    public static ILoggingBuilder AddNewRelic(this ILoggingBuilder loggingBuilder, IServiceCollection services)
     {
-        var newRelicLevels = configuration.GetSection("Logging:NewRelic:ActiveLogLevels").Get<List<string>>();
-        var newRelicKey = configuration.GetValue(typeof(string), "Logging:NewRelic:NewRelicLicenseKey") as string;
-        var channel = configuration.GetValue(typeof(string), "Logging:NewRelic:Channel") as string;
-        var logType = configuration.GetValue(typeof(string), "Logging:NewRelic:LogType") as string;
+        var newRelicLevels = Context.Configuration.GetSection("Logging:NewRelic:ActiveLogLevels").Get<List<string>>();
+        var newRelicKey = Context.Configuration.GetValue(typeof(string), "Logging:NewRelic:NewRelicLicenseKey") as string;
+        var channel = Context.Configuration.GetValue(typeof(string), "Logging:NewRelic:Channel") as string;
+        var logType = Context.Configuration.GetValue(typeof(string), "Logging:NewRelic:LogType") as string;
         if (!string.IsNullOrWhiteSpace(newRelicKey))
         {
             IEnumerable<LogLevel> levels = Array.Empty<LogLevel>();
