@@ -4,7 +4,7 @@
 public sealed class NewRelicLoggerProvider : ILoggerProvider
 {
     private readonly IDisposable? onChangeToken;
-    private NewRelicOptions currentConfig;
+    private NewRelicOptions currentOptions;
     private readonly ConcurrentDictionary<string, NewRelicApiLogger> loggers = new(StringComparer.OrdinalIgnoreCase);
     private readonly IEnvironmentHelper environmentHelper;
     private readonly IJsonSerializer jsonSerializer;
@@ -14,16 +14,16 @@ public sealed class NewRelicLoggerProvider : ILoggerProvider
         IEnvironmentHelper environmentHelper,
         IJsonSerializer jsonSerializer)
     {
-        currentConfig = config.CurrentValue;
-        onChangeToken = config.OnChange(updatedConfig => currentConfig = updatedConfig);
+        currentOptions = config.CurrentValue;
+        onChangeToken = config.OnChange(updatedOptions => currentOptions = updatedOptions);
         this.environmentHelper = environmentHelper;
         this.jsonSerializer = jsonSerializer;
     }
 
     public ILogger CreateLogger(string categoryName) =>
-        loggers.GetOrAdd(categoryName, categoryName => new NewRelicApiLogger(jsonSerializer, currentConfig, categoryName, environmentHelper, GetCurrentConfig));
+        loggers.GetOrAdd(categoryName, categoryName => new NewRelicApiLogger(jsonSerializer, currentOptions, categoryName, environmentHelper, GetCurrentConfig));
 
-    private NewRelicOptions GetCurrentConfig() => currentConfig;
+    private NewRelicOptions GetCurrentConfig() => currentOptions;
 
     public void Dispose()
     {

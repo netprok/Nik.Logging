@@ -10,7 +10,7 @@ public static class ServicesExtensions
         var logType = configuration.GetValue(typeof(string), "Logging:NewRelic:LogType") as string;
         if (!string.IsNullOrWhiteSpace(newRelicKey))
         {
-            IEnumerable<LogLevel> levels = new LogLevel[] { };
+            IEnumerable<LogLevel> levels = Array.Empty<LogLevel>();
 
             if (newRelicLevels == default)
             {
@@ -21,7 +21,10 @@ public static class ServicesExtensions
                 levels = newRelicLevels.Select(level => Enum.Parse<LogLevel>(level));
             }
 
-            services.AddNewRelicLogger(configuration =>
+            services.TryAddEnumerable(ServiceDescriptor.Singleton<ILoggerProvider, NewRelicLoggerProvider>());
+            LoggerProviderOptions.RegisterProviderOptions<NewRelicOptions, NewRelicLoggerProvider>(services);
+
+            services.Configure<NewRelicOptions>(configuration =>
             {
                 configuration.ActiveLogLevels.AddRange(levels);
                 configuration.NewRelicLicenseKey = newRelicKey;
