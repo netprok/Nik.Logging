@@ -9,7 +9,6 @@ public sealed class NewRelicApiLogger(
         IEnvironmentHelper environmentHelper,
         Func<NewRelicOptions> getCurrentConfig) : ILogger
 {
-
     private LogContent GenerateLogContent(string message, LogLevel level, string eventID, Exception exception)
     {
         var environmentName = environmentHelper.GetEnvironmentName();
