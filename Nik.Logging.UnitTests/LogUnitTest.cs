@@ -1,5 +1,3 @@
-using System.Threading;
-
 namespace Nik.Logging.UnitTests;
 
 public class LogUnitTest
@@ -20,7 +18,7 @@ public class LogUnitTest
     public void Test1()
     {
         var host = Prepare();
-        var logger = host.Services.GetService(typeof(ILogger<LogUnitTest>)) as ILogger<LogUnitTest>;
+        var logger = host.Services.GetService<ILogger<LogUnitTest>>();
         logger.Should().NotBeNull();
         logger.LogError("TEST");
         Thread.Sleep(10000);
