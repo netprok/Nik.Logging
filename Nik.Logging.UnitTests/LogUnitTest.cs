@@ -1,4 +1,4 @@
-namespace Nik.Logging.UnitTests;
+﻿namespace Nik.Logging.UnitTests;
 
 public class LogUnitTest
 {
@@ -20,7 +20,7 @@ public class LogUnitTest
         var host = Prepare();
         var logger = host.Services.GetService<ILogger<LogUnitTest>>();
         logger.Should().NotBeNull();
-        logger.LogError("TEST");
+        logger!.LogError("TEST");
         Thread.Sleep(10000);
     }
 }
