@@ -1,5 +1,5 @@
 dotnet pack -c Release -p:Version=1.0.0
 
-nuget add '.\Nik.Logging\bin\Release\Nik.Logging.1.0.0.nupkg' -source 'D:\OneDrive\Software Development\nik-nuget-package-source'
-nuget add '.\Nik.Logging.NewRelic\bin\Release\Nik.Logging.NewRelic.1.0.0.nupkg' -source 'D:\OneDrive\Software Development\nik-nuget-package-source'
+nuget add '.\Nik.Logging\bin\Release\Nik.Logging.1.0.0.nupkg' -source 'C:\Users\netpr\OneDrive\Software Development\nik-nuget-package-source'
+nuget add '.\Nik.Logging.NewRelic\bin\Release\Nik.Logging.NewRelic.1.0.0.nupkg' -source 'C:\Users\netpr\OneDrive\Software Development\nik-nuget-package-source'
 
